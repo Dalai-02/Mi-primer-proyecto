@@ -1,0 +1,457 @@
+/* ========================================
+   SISTEMA DE DISEÑO GLOBAL - CINEMEX
+   ======================================== */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+}
+
+/* ========================================
+   COMPONENTES REUTILIZABLES
+   ======================================== */
+
+/* Contenedor principal */
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+  min-height: calc(100vh - 80px);
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+/* Grid responsivo */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-md);
+  }
+}
+
+/* Tarjeta base premium */
+.card {
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-primary);
+}
+
+.card-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: var(--spacing-md);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  margin: var(--spacing-sm) 0;
+}
+
+/* Botones premium */
+.btn {
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #ff4b5c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 39, 53, 0.4);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: #000;
+}
+
+.btn-secondary:hover {
+  background: #ffd633;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Badges y etiquetas */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.badge-secondary {
+  background: var(--color-secondary);
+  color: #000;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-secondary);
+  margin: var(--spacing-sm) auto 0;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--spacing-sm);
+  font-weight: 400;
+}
+
+/* Category headers */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.category-line {
+  width: 6px;
+  height: 40px;
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .main-container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .category-title {
+    font-size: 1.4rem;
+  }
+  
+  .card-image {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+  
+  .card-body {
+    padding: var(--spacing-sm);
+  }
+  
+  .btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   PÁGINA DE DETALLE
+   ======================================== */
+
+.detalle-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+  margin-top: var(--spacing-md);
+}
+
+.detalle-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.detalle-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.detalle-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+}
+
+.detalle-info {
+  padding: var(--spacing-md);
+}
+
+.detalle-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.detalle-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-lg);
+}
+
+.detalle-badge {
+  padding: 8px 16px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detalle-genre {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.detalle-duration {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.detalle-sinopsis {
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 16px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.detalle-sinopsis h2 {
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.detalle-sinopsis p {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.btn-large {
+  padding: 16px 48px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Responsive para Detalle */
+@media (max-width: 1024px) {
+  .detalle-hero {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .detalle-image {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detalle-image {
+    height: 400px;
+  }
+  
+  .detalle-title {
+    font-size: 2rem;
+  }
+  
+  .detalle-sinopsis {
+    padding: var(--spacing-md);
+  }
+  
+  .btn-large {
+    width: 100%;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .detalle-image {
+    height: 300px;
+  }
+  
+  .detalle-meta {
+    gap: var(--spacing-sm);
+  }
+  
+  .detalle-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
