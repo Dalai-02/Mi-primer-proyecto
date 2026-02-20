@@ -1,47 +1,101 @@
-// Vista de detalle de una película
+import { useState } from "react";
+
 function Detalle({ pelicula }) {
-  const titulo = pelicula?.titulo || pelicula?.title || "Película Seleccionada";
-  const imagen = pelicula?.imagen || pelicula?.image || "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80";
-  const genero = pelicula?.genero || "Aventura";
-  const duracion = pelicula?.duracion || "120 min";
-  const etiqueta = pelicula?.etiqueta;
+  const [nombre, setNombre] = useState("");
+  const [cantidadBoletos, setCantidadBoletos] = useState(1);
+  const [mensaje, setMensaje] = useState("");
+
+  if (!pelicula) {
+    return (
+      <main className="detalle-page">
+        <div className="detalle-empty">
+          <h2>No hay pelicula seleccionada</h2>
+          <p>Elige una pelicula para ver su informacion completa.</p>
+        </div>
+      </main>
+    );
+  }
+
+  function manejarCompra(e) {
+    e.preventDefault();
+
+    setMensaje(
+      `Gracias ${nombre}, compraste ${cantidadBoletos} boleto(s) para ${pelicula.titulo}`
+    );
+
+    setNombre("");
+    setCantidadBoletos(1);
+  }
 
   return (
-    <main className="main-container">
-      {/* Hero Section */}
-      <div className="detalle-hero">
-        <div className="detalle-image-container">
-          <img src={imagen} alt={titulo} className="detalle-image" />
-          <div className="detalle-gradient"></div>
+    <main className="detalle-page">
+      <section className="detalle-card">
+        <div className="detalle-media">
+          <img src={pelicula.imagen} alt={pelicula.titulo} />
+          <div className="detalle-glow"></div>
         </div>
-        
-        <div className="detalle-info">
-          <h1 className="detalle-title">{titulo}</h1>
-          
+
+        <div className="detalle-body">
+          <div className="detalle-head">
+            <p className="detalle-kicker">Detalle de la pelicula</p>
+            <h2>{pelicula.titulo}</h2>
+          </div>
+
           <div className="detalle-meta">
-            {etiqueta && <span className="detalle-badge">{etiqueta}</span>}
-            <span className="detalle-genre">{genero}</span>
-            <span className="detalle-duration">{duracion}</span>
+            {pelicula.etiqueta && (
+              <span className="detalle-chip">{pelicula.etiqueta}</span>
+            )}
+            <span>{pelicula.genero}</span>
+            <span>{pelicula.duracion}</span>
+            {pelicula.clasificacion && (
+              <span>Clasificacion: {pelicula.clasificacion}</span>
+            )}
           </div>
 
-          <div className="detalle-sinopsis">
-            <h2>Sinopsis</h2>
-            <p>
-              Una historia épica que te mantendrá al borde de tu asiento. 
-              Experimenta la magia del cine con la mejor calidad de imagen y sonido. 
-              Disfruta de esta película en la comodidad de nuestras salas premium 
-              con tecnología de última generación.
-            </p>
+          <p className="detalle-sinopsis">{pelicula.sinopsis}</p>
+
+          <div className="detalle-info">
+            {pelicula.director && <p>Director: {pelicula.director}</p>}
+            {pelicula.reparto && <p>Reparto: {pelicula.reparto}</p>}
           </div>
 
-          <button className="btn btn-primary btn-large">
-            Comprar Boletos
-          </button>
+          <div className="detalle-divider"></div>
+
+          <div className="detalle-form">
+            <h3>Comprar boletos</h3>
+            <form onSubmit={manejarCompra}>
+              <label>
+                Nombre
+                <input
+                  type="text"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  placeholder="Tu nombre"
+                  required
+                />
+              </label>
+
+              <label>
+                Cantidad de boletos
+                <input
+                  type="number"
+                  min="1"
+                  value={cantidadBoletos}
+                  onChange={(e) => setCantidadBoletos(e.target.value)}
+                  required
+                />
+              </label>
+
+              <button type="submit" className="btn btn-primary">
+                Comprar
+              </button>
+            </form>
+            {mensaje && <p className="detalle-mensaje">{mensaje}</p>}
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
 
-// Exportamos la vista
 export default Detalle;

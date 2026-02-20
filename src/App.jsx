@@ -6,25 +6,30 @@ import Cartelera from "./pages/Cartelera";
 import Detalle from "./pages/Detalle";
 import Dulceria from "./pages/Dulceria";
 import Otros from "./pages/Otros";
+import Footer from "./components/Footer";
 
 function App() {
-  const [vista, setVista] = useState("home");
+  const [vistaActual, setVistaActual] = useState("home");
   const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null);
 
-  const irADetalle = (pelicula) => {
+  function verDetalle(pelicula) {
     setPeliculaSeleccionada(pelicula);
-    setVista("detalle");
-  };
+    setVistaActual("detalle");
+  }
 
   return (
     <>
-      <Header cambiarVista={setVista} />
+      <Header cambiarVista={setVistaActual} />
 
-      {vista === "home" && <Home onVerDetalle={irADetalle} />}
-      {vista === "cartelera" && <Cartelera onVerDetalle={irADetalle} />}
-      {vista === "detalle" && <Detalle pelicula={peliculaSeleccionada} />}
-      {vista === "dulceria" && <Dulceria />}
-      {vista === "otros" && <Otros />}
+      {vistaActual === "home" && <Home verDetalle={verDetalle} />}
+      {vistaActual === "cartelera" && <Cartelera verDetalle={verDetalle} />}
+      {vistaActual === "detalle" && (
+        <Detalle pelicula={peliculaSeleccionada} />
+      )}
+      {vistaActual === "dulceria" && <Dulceria />}
+      {vistaActual === "otros" && <Otros />}
+
+      <Footer />
     </>
   );
 }
