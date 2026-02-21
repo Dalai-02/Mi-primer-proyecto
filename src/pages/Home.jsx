@@ -10,9 +10,19 @@ function Home({ verDetalle }) {
   const carouselRef = useRef(null);
   const [noticias, setNoticias] = useState([]);
 
+  function mezclarPeliculas(lista) {
+    const copia = [...lista];
+    for (let i = copia.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+    return copia;
+  }
+
   useEffect(() => {
     const data = peliculasData.filter((pelicula) => pelicula.seccion === "home");
-    setPeliculasHome(data);
+    const destacadas = mezclarPeliculas(data).slice(0, 4);
+    setPeliculasHome(destacadas);
   }, []);
 
   useEffect(() => {

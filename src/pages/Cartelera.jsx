@@ -4,11 +4,9 @@ import peliculas from "../detalles.json";
 
 function Cartelera({ verDetalle }) {
   const [filtro, setFiltro] = useState("");
-  const peliculasFiltradas = peliculas
-    .filter((pelicula) => pelicula.seccion === "cartelera")
-    .filter((pelicula) =>
-      pelicula.titulo.toLowerCase().includes(filtro.toLowerCase())
-    );
+  const peliculasFiltradas = peliculas.filter((pelicula) =>
+    pelicula.titulo.toLowerCase().includes(filtro.toLowerCase())
+  );
 
   return (
     <main className="main-container">

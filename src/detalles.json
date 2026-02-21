@@ -115,5 +115,57 @@
     "director": "James Cameron",
     "reparto": "Sam Worthington, Zoe Saldana, Sigourney Weaver",
     "clasificacion": "B"
+  },
+  {
+    "id": 10,
+    "titulo": "El Jardin de Invierno",
+    "genero": "Drama • Romance",
+    "duracion": "124 min",
+    "imagen": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80",
+    "etiqueta": "DESTACADO",
+    "seccion": "home",
+    "sinopsis": "Dos desconocidos se encuentran cada invierno en una ciudad nevada y descubren un secreto que los une.",
+    "director": "Claudia Rios",
+    "reparto": "Isabela Cruz, Daniel Prado, Elena Silva",
+    "clasificacion": "B"
+  },
+  {
+    "id": 11,
+    "titulo": "Ruta 47",
+    "genero": "Accion • Suspenso",
+    "duracion": "112 min",
+    "imagen": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=800&q=80",
+    "etiqueta": "NUEVO",
+    "seccion": "home",
+    "sinopsis": "Una conductora de reparto queda atrapada en una conspiracion y debe cruzar la ciudad antes del amanecer.",
+    "director": "Mateo Salas",
+    "reparto": "Rene Vargas, Lucia Mena, Tomas Ibarra",
+    "clasificacion": "B"
+  },
+  {
+    "id": 12,
+    "titulo": "Nebula Roja",
+    "genero": "Ciencia Ficcion • Aventura",
+    "duracion": "138 min",
+    "imagen": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80",
+    "etiqueta": "ESTRENO",
+    "seccion": "home",
+    "sinopsis": "Una tripulacion explora un sistema prohibido y descubre una inteligencia capaz de alterar la realidad.",
+    "director": "Sofia Alarcon",
+    "reparto": "Camila Rojas, Leo Franco, Bruno Vidal",
+    "clasificacion": "B"
+  },
+  {
+    "id": 13,
+    "titulo": "La Ultima Carcajada",
+    "genero": "Comedia • Familiar",
+    "duracion": "102 min",
+    "imagen": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&q=80",
+    "etiqueta": "FAMILIAR",
+    "seccion": "home",
+    "sinopsis": "Un comediante retirado vuelve al escenario y descubre que la risa tambien puede sanar a su familia.",
+    "director": "Martin Ocampo",
+    "reparto": "Pablo Reyes, Ana Luisa, Jorge Ibarra",
+    "clasificacion": "A"
   }
 ]
