@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PremiumCard from "../components/PremiumCard";
 import peliculasData from "../detalles.json";
 
-function Home({ verDetalle }) {
+function Home() {
+  const navigate = useNavigate();
   const [peliculasHome, setPeliculasHome] = useState([]);
   const [favoritas, setFavoritas] = useState([]);
   const [descripcionAbierta, setDescripcionAbierta] = useState(null);
@@ -148,7 +150,7 @@ function Home({ verDetalle }) {
               subtitulo={`${pelicula.genero} • ${pelicula.duracion}`}
               etiqueta={pelicula.etiqueta}
               textoBoton="Ver detalle"
-              onClickBoton={() => verDetalle(pelicula)}
+              onClickBoton={() => navigate(`/detalle/${pelicula.id}`)}
             />
 
             <div className="home-actions">

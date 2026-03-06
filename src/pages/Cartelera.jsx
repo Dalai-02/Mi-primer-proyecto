@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PremiumCard from "../components/PremiumCard";
 import peliculas from "../detalles.json";
 
-function Cartelera({ verDetalle }) {
+function Cartelera() {
+  const navigate = useNavigate();
   const [filtro, setFiltro] = useState("");
   const peliculasFiltradas = peliculas.filter((pelicula) =>
     pelicula.titulo.toLowerCase().includes(filtro.toLowerCase())
@@ -35,7 +37,7 @@ function Cartelera({ verDetalle }) {
             subtitulo={`${pelicula.genero} • ${pelicula.duracion}`}
             etiqueta={pelicula.etiqueta}
             textoBoton="Ver detalle"
-            onClickBoton={() => verDetalle(pelicula)}
+            onClickBoton={() => navigate(`/detalle/${pelicula.id}`)}
           />
         ))}
       </div>

@@ -1,19 +1,19 @@
 import { useState } from "react";
+import { useParams, Navigate } from "react-router-dom";
+import peliculasData from "../detalles.json";
 
-function Detalle({ pelicula }) {
+function Detalle() {
+  const { id } = useParams();
   const [nombre, setNombre] = useState("");
   const [cantidadBoletos, setCantidadBoletos] = useState(1);
   const [mensaje, setMensaje] = useState("");
 
+  // Buscar la película por ID
+  const pelicula = peliculasData.find((p) => p.id === parseInt(id));
+
+  // Si no se encuentra la película, redirigir al home
   if (!pelicula) {
-    return (
-      <main className="detalle-page">
-        <div className="detalle-empty">
-          <h2>No hay pelicula seleccionada</h2>
-          <p>Elige una pelicula para ver su informacion completa.</p>
-        </div>
-      </main>
-    );
+    return <Navigate to="/" replace />;
   }
 
   function manejarCompra(e) {

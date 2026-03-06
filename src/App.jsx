@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -9,25 +9,17 @@ import Otros from "./pages/Otros";
 import Footer from "./components/Footer";
 
 function App() {
-  const [vistaActual, setVistaActual] = useState("home");
-  const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null);
-
-  function verDetalle(pelicula) {
-    setPeliculaSeleccionada(pelicula);
-    setVistaActual("detalle");
-  }
-
   return (
     <>
-      <Header cambiarVista={setVistaActual} />
+      <Header />
 
-      {vistaActual === "home" && <Home verDetalle={verDetalle} />}
-      {vistaActual === "cartelera" && <Cartelera verDetalle={verDetalle} />}
-      {vistaActual === "detalle" && (
-        <Detalle pelicula={peliculaSeleccionada} />
-      )}
-      {vistaActual === "dulceria" && <Dulceria />}
-      {vistaActual === "otros" && <Otros />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cartelera" element={<Cartelera />} />
+        <Route path="/detalle/:id" element={<Detalle />} />
+        <Route path="/dulceria" element={<Dulceria />} />
+        <Route path="/otros" element={<Otros />} />
+      </Routes>
 
       <Footer />
     </>

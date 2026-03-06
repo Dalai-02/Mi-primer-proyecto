@@ -1,16 +1,16 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
-function Header({ cambiarVista }) {
+function Header() {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   const toggleMenu = () => {
     setMenuAbierto(!menuAbierto);
   };
 
-  const navegarA = (vista) => {
-    cambiarVista(vista);
-    setMenuAbierto(false); // Cierra el menú al navegar
+  const cerrarMenu = () => {
+    setMenuAbierto(false);
   };
 
   return (
@@ -33,18 +33,34 @@ function Header({ cambiarVista }) {
 
         {/* Navegación */}
         <nav className={`header-nav ${menuAbierto ? "active" : ""}`}>
-          <span className="nav-link" onClick={() => navegarA("home")}>
+          <NavLink 
+            to="/" 
+            className="nav-link"
+            onClick={cerrarMenu}
+          >
             Inicio
-          </span>
-          <span className="nav-link" onClick={() => navegarA("cartelera")}>
+          </NavLink>
+          <NavLink 
+            to="/cartelera" 
+            className="nav-link"
+            onClick={cerrarMenu}
+          >
             Cartelera
-          </span>
-          <span className="nav-link" onClick={() => navegarA("dulceria")}>
+          </NavLink>
+          <NavLink 
+            to="/dulceria" 
+            className="nav-link"
+            onClick={cerrarMenu}
+          >
             Dulcería
-          </span>
-          <span className="nav-link" onClick={() => navegarA("otros")}>
+          </NavLink>
+          <NavLink 
+            to="/otros" 
+            className="nav-link"
+            onClick={cerrarMenu}
+          >
             Otros
-          </span>
+          </NavLink>
         </nav>
       </div>
 
