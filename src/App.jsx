@@ -6,6 +6,7 @@ import Cartelera from "./pages/Cartelera";
 import Detalle from "./pages/Detalle";
 import Dulceria from "./pages/Dulceria";
 import Otros from "./pages/Otros";
+import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/detalle/:id" element={<Detalle />} />
         <Route path="/dulceria" element={<Dulceria />} />
         <Route path="/otros" element={<Otros />} />
+        <Route path="/contacto" element={<Contacto />} />
       </Routes>
 
       <Footer />

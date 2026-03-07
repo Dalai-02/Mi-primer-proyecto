@@ -75,6 +75,17 @@
   width: 100%;
 }
 
+/* Estado activo de NavLink */
+.nav-link.active {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background: var(--color-primary);
+}
+
 /* Botón hamburguesa */
 .hamburger {
   display: none;

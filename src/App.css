@@ -1022,3 +1022,359 @@
     padding: 6px 12px;
   }
 }
+
+/* ========================================
+   PÁGINA DE CONTACTO
+   ======================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+}
+
+.contacto-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Formulario de contacto */
+.contacto-form-section {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(20, 20, 25, 0.95) 100%);
+  border-radius: 24px;
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 187, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contacto-form-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(243, 39, 53, 0.15), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contacto-form-section h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.contacto-form {
+  display: grid;
+  gap: var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all var(--transition-normal);
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(243, 39, 53, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.mensaje-exito {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.05));
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  animation: slideIn 0.4s ease;
+}
+
+.mensaje-exito p {
+  color: #7cffc4;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Información de contacto */
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.info-card {
+  background: var(--color-bg-secondary);
+  border-radius: 20px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 187, 0, 0.2);
+}
+
+.info-card h3 {
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-card h3::before {
+  content: "●";
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.info-item {
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item strong {
+  display: block;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.info-item p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin: 4px 0;
+}
+
+.info-subtitle {
+  font-size: 0.85rem !important;
+  color: var(--color-text-muted) !important;
+  font-style: italic;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-list li {
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: rgba(255, 187, 0, 0.05);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: 8px;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.faq-list li:hover {
+  background: rgba(255, 187, 0, 0.12);
+  transform: translateX(4px);
+  color: var(--color-text-primary);
+}
+
+/* Sección de sucursales */
+.sucursales-section {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, rgba(243, 39, 53, 0.05), transparent);
+  border-radius: 24px;
+}
+
+.sucursales-section h2 {
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.sucursales-section .section-subtitle {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sucursales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.sucursal-card {
+  background: var(--color-bg-card);
+  border-radius: 20px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.sucursal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+}
+
+.sucursal-card:hover::before {
+  transform: scaleX(1);
+}
+
+.sucursal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-primary);
+  border-color: rgba(243, 39, 53, 0.3);
+}
+
+.sucursal-card h3 {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+}
+
+.sucursal-info {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.sucursal-info p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sucursal-info strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sucursal-card .btn {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+/* Responsive para Contacto */
+@media (max-width: 1024px) {
+  .contacto-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .contacto-form-section {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    padding-top: var(--spacing-md);
+  }
+  
+  .contacto-form-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .sucursales-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .sucursales-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sucursal-card {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .contacto-form-section {
+    padding: var(--spacing-md);
+  }
+  
+  .info-card {
+    padding: var(--spacing-md);
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 14px;
+  }
+}

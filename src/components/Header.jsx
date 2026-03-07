@@ -61,6 +61,13 @@ function Header() {
           >
             Otros
           </NavLink>
+          <NavLink 
+            to="/contacto" 
+            className="nav-link"
+            onClick={cerrarMenu}
+          >
+            Contacto
+          </NavLink>
         </nav>
       </div>
 
