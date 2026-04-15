@@ -1,4 +1,5 @@
 import "./PremiumCard.css";
+import Button from "./Button";
 
 function PremiumCard({ 
   imagen, 
@@ -29,9 +30,9 @@ function PremiumCard({
           <p className="premium-card-price">{precio}</p>
         )}
         
-        <button className="premium-card-btn" onClick={onClickBoton}>
+        <Button className="premium-card-btn" onClick={onClickBoton}>
           {textoBoton}
-        </button>
+        </Button>
       </div>
     </div>
   );

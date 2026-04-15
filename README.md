@@ -1,16 +1,68 @@
-# React + Vite
+# Mi primer proyecto React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objetivo de la optimizacion
+Mejorar organizacion, rendimiento y mantenimiento de la app aplicando buenas practicas.
 
-Currently, two official plugins are available:
+## 1. Organizacion del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Rutas en archivo independiente
+- Se movieron las rutas desde App hacia [src/routes/AppRoutes.jsx](src/routes/AppRoutes.jsx).
+- Se dejo [src/App.jsx](src/App.jsx) solo como layout principal (Header + rutas + Footer).
 
-## React Compiler
+Justificacion:
+- App queda mas limpio y facil de leer.
+- Si agrego nuevas paginas, solo toco un archivo de rutas.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Mejor estructura para datos
+- Se creo [src/data/peliculas.js](src/data/peliculas.js) para centralizar el consumo de peliculas.
+- Home, Cartelera y Detalle ahora consumen ese modulo, no el JSON directo.
 
-## Expanding the ESLint configuration
+Justificacion:
+- Evita repetir logica en varias paginas.
+- Facilita cambios futuros (por ejemplo, cambiar JSON por API).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 2. Buenas practicas aplicadas
+
+### Carga diferida de paginas (lazy loading)
+- En [src/routes/AppRoutes.jsx](src/routes/AppRoutes.jsx) se uso `React.lazy` + `Suspense`.
+
+Justificacion:
+- La aplicacion no descarga todas las paginas al inicio.
+- Mejora el tiempo de carga inicial.
+
+### Eliminacion de codigo innecesario
+- Se elimino el componente Button porque solo se usaba una vez.
+- [src/components/MovieCard.jsx](src/components/MovieCard.jsx) quedo mas simple.
+
+Justificacion:
+- Menos archivos y menos dependencias entre componentes.
+- Mantenimiento mas sencillo.
+
+### Uso adecuado de estilos y datos
+- Se movieron estilos inline de Cartelera y MovieCard a CSS.
+- Se agrego [src/components/MovieCard.css](src/components/MovieCard.css).
+- Se agregaron clases nuevas en [src/App.css](src/App.css) para secciones reutilizables.
+
+Justificacion:
+- Menos codigo recreado en cada render.
+- Mejor separacion entre logica y presentacion.
+
+### Optimizaciones de render
+- En Cartelera se memoizo el filtrado y el orden aleatorio (`useMemo`).
+- En Home se quito estado/efecto innecesario para peliculas destacadas.
+
+Justificacion:
+- Se reducen calculos repetidos en cada render.
+- Comportamiento mas predecible y codigo mas claro.
+
+## 3. Resultado
+- Proyecto mas ordenado por responsabilidades.
+- Mejor rendimiento de carga inicial.
+- Componentes con menos ruido y mas faciles de mantener.
+
+## Comandos
+```bash
+npm install
+npm run dev
+npm run build
+```

@@ -167,5 +167,70 @@
     "director": "Martin Ocampo",
     "reparto": "Pablo Reyes, Ana Luisa, Jorge Ibarra",
     "clasificacion": "A"
+  },
+  {
+    "id": 14,
+    "titulo": "Sombras del Puerto",
+    "genero": "Suspenso • Drama",
+    "duracion": "116 min",
+    "imagen": "https://images.unsplash.com/photo-1519677584237-752f8853252e?w=800&q=80",
+    "etiqueta": "ESTRENO",
+    "seccion": "cartelera",
+    "sinopsis": "Una periodista investiga desapariciones en un puerto industrial y descubre una red de secretos que involucra a su propia familia.",
+    "director": "Valeria Ponce",
+    "reparto": "Irene Soto, Marco Leal, Diego Serra",
+    "clasificacion": "B"
+  },
+  {
+    "id": 15,
+    "titulo": "Pixel Runners",
+    "genero": "Accion • Ciencia Ficcion",
+    "duracion": "121 min",
+    "imagen": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+    "etiqueta": "IMAX",
+    "seccion": "cartelera",
+    "sinopsis": "Un equipo de gamers profesionales entra a un torneo experimental donde cada partida altera la realidad.",
+    "director": "Oscar Beltran",
+    "reparto": "Nora Diaz, Kevin Lara, Ulises Mora",
+    "clasificacion": "B"
+  },
+  {
+    "id": 16,
+    "titulo": "Verano en Kyoto",
+    "genero": "Romance • Drama",
+    "duracion": "109 min",
+    "imagen": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+    "etiqueta": "REESTRENO",
+    "seccion": "cartelera",
+    "sinopsis": "Una chef mexicana viaja a Japon para perfeccionar su cocina y termina encontrando un amor inesperado.",
+    "director": "Aiko Tanaka",
+    "reparto": "Ren Ito, Paula Campos, Sora Nakamura",
+    "clasificacion": "B"
+  },
+  {
+    "id": 17,
+    "titulo": "Guardianes de Titan",
+    "genero": "Aventura • Fantasia",
+    "duracion": "132 min",
+    "imagen": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&q=80",
+    "etiqueta": "PREVENTA",
+    "seccion": "cartelera",
+    "sinopsis": "Cinco jovenes descubren una armadura ancestral y deben defender su ciudad de criaturas de otra dimension.",
+    "director": "Ernesto Vega",
+    "reparto": "Sara Montes, Emiliano Cruz, Hugo Peralta",
+    "clasificacion": "A"
+  },
+  {
+    "id": 18,
+    "titulo": "Mision Andromeda",
+    "genero": "Ciencia Ficcion • Accion",
+    "duracion": "145 min",
+    "imagen": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80",
+    "etiqueta": "NUEVO",
+    "seccion": "cartelera",
+    "sinopsis": "Una tripulacion internacional intenta reparar una estacion en orbita mientras una tormenta solar amenaza la Tierra.",
+    "director": "Lucia Ferrer",
+    "reparto": "Alonso Rivas, Brenda Soto, Raul Pineda",
+    "clasificacion": "B"
   }
 ]

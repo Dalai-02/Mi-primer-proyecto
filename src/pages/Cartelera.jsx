@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PremiumCard from "../components/PremiumCard";
-import peliculas from "../detalles.json";
+import MovieCarousel from "../components/MovieCarousel";
+import { mezclarLista, peliculasData } from "../data/peliculas";
 
 function Cartelera() {
   const navigate = useNavigate();
   const [filtro, setFiltro] = useState("");
-  const peliculasFiltradas = peliculas.filter((pelicula) =>
-    pelicula.titulo.toLowerCase().includes(filtro.toLowerCase())
+
+  const peliculasRandom = useMemo(() => {
+    return mezclarLista(peliculasData);
+  }, []);
+
+  const peliculasFiltradas = useMemo(
+    () =>
+      peliculasData.filter((pelicula) =>
+        pelicula.titulo.toLowerCase().includes(filtro.toLowerCase())
+      ),
+    [filtro]
   );
 
   return (
     <main className="main-container">
       <h1 className="section-title">Cartelera</h1>
       <p className="section-subtitle">Disfruta las mejores películas en pantalla grande</p>
+
+      <section className="cartelera-estrenos">
+        <h2>ESTRENOS</h2>
+        <MovieCarousel
+          movies={peliculasRandom}
+          onVerDetalle={(id) => navigate(`/detalle/${id}`)}
+        />
+      </section>
 
       <section className="home-controls">
         <div className="home-filter">

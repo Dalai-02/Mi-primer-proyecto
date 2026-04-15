@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import peliculasData from "../detalles.json";
+import Button from "../components/Button";
+import { peliculasData } from "../data/peliculas";
 
 function Detalle() {
   const { id } = useParams();
@@ -8,10 +9,8 @@ function Detalle() {
   const [cantidadBoletos, setCantidadBoletos] = useState(1);
   const [mensaje, setMensaje] = useState("");
 
-  // Buscar la película por ID
-  const pelicula = peliculasData.find((p) => p.id === parseInt(id));
+  const pelicula = peliculasData.find((p) => p.id === Number(id));
 
-  // Si no se encuentra la película, redirigir al home
   if (!pelicula) {
     return <Navigate to="/" replace />;
   }
@@ -86,9 +85,9 @@ function Detalle() {
                 />
               </label>
 
-              <button type="submit" className="btn btn-primary">
+              <Button type="submit" className="btn btn-primary">
                 Comprar
-              </button>
+              </Button>
             </form>
             {mensaje && <p className="detalle-mensaje">{mensaje}</p>}
           </div>

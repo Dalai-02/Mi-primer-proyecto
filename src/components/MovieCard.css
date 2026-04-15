@@ -1,0 +1,25 @@
+.movie-card {
+  border: none;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  max-width: 220px;
+  text-align: center;
+}
+
+.movie-card-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.movie-card-content {
+  padding: 12px;
+  text-align: center;
+}
+
+.movie-card-title {
+  margin-bottom: 10px;
+}

@@ -8,6 +8,14 @@
   background-color: var(--color-bg-dark);
 }
 
+.route-loader {
+  min-height: 40vh;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
 /* ========================================
    COMPONENTES REUTILIZABLES
    ======================================== */
@@ -189,6 +197,12 @@
   text-align: center;
   margin-top: var(--spacing-sm);
   font-weight: 400;
+}
+
+.cartelera-estrenos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 /* Category headers */
@@ -570,6 +584,34 @@
   display: flex;
   gap: var(--spacing-sm);
   flex-wrap: wrap;
+}
+
+.site-footer-apps {
+  align-content: start;
+}
+
+.site-footer-store-badges {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.site-footer-store-badges a {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.site-footer-store-badges a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.site-footer-store-badges img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .site-footer-bottom {

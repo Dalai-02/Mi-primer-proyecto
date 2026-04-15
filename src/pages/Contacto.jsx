@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../components/Button";
 
 function Contacto() {
   const [formData, setFormData] = useState({
@@ -138,9 +139,9 @@ function Contacto() {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-large">
+            <Button type="submit" className="btn btn-primary btn-large">
               {enviado ? "✓ Mensaje enviado" : "Enviar mensaje"}
-            </button>
+            </Button>
 
             {enviado && (
               <div className="mensaje-exito">
@@ -205,7 +206,7 @@ function Contacto() {
                   <strong> Horario:</strong> {sucursal.horario}
                 </p>
               </div>
-              <button className="btn btn-outline">Ver en mapa</button>
+              <Button className="btn btn-outline">Ver en mapa</Button>
             </article>
           ))}
         </div>

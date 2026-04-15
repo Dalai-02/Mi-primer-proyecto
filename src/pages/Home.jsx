@@ -1,31 +1,55 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 import PremiumCard from "../components/PremiumCard";
-import peliculasData from "../detalles.json";
+import { getPeliculasHomeDestacadas } from "../data/peliculas";
+
+const estrenos = [
+  {
+    id: 101,
+    titulo: "Horizonte Neon",
+    fechaEstreno: "12 Mar 2026",
+    imagen:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=900&q=80"
+  },
+  {
+    id: 102,
+    titulo: "Mar de Acero",
+    fechaEstreno: "26 Mar 2026",
+    imagen:
+      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=900&q=80"
+  },
+  {
+    id: 103,
+    titulo: "Codigo Aurora",
+    fechaEstreno: "9 Abr 2026",
+    imagen:
+      "https://images.unsplash.com/photo-1517602383353-e7db3b0ea3a0?w=900&q=80"
+  },
+  {
+    id: 104,
+    titulo: "Ultima Funcion",
+    fechaEstreno: "30 Abr 2026",
+    imagen:
+      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80"
+  }
+];
+
+const promociones = [
+  "2x1 miercoles",
+  "Combo familiar",
+  "Membresia VIP",
+  "Descuentos para estudiantes"
+];
 
 function Home() {
   const navigate = useNavigate();
-  const [peliculasHome, setPeliculasHome] = useState([]);
+  const peliculasHome = useMemo(() => getPeliculasHomeDestacadas(4), []);
   const [favoritas, setFavoritas] = useState([]);
   const [descripcionAbierta, setDescripcionAbierta] = useState(null);
   const [recordatorios, setRecordatorios] = useState([]);
   const carouselRef = useRef(null);
   const [noticias, setNoticias] = useState([]);
-
-  function mezclarPeliculas(lista) {
-    const copia = [...lista];
-    for (let i = copia.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copia[i], copia[j]] = [copia[j], copia[i]];
-    }
-    return copia;
-  }
-
-  useEffect(() => {
-    const data = peliculasData.filter((pelicula) => pelicula.seccion === "home");
-    const destacadas = mezclarPeliculas(data).slice(0, 4);
-    setPeliculasHome(destacadas);
-  }, []);
 
   useEffect(() => {
     let isActive = true;
@@ -43,8 +67,6 @@ function Home() {
     };
   }, []);
 
-  const peliculasFiltradas = peliculasHome;
-
   function toggleFavorita(id) {
     setFavoritas((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -54,44 +76,6 @@ function Home() {
   function toggleDescripcion(id) {
     setDescripcionAbierta((prev) => (prev === id ? null : id));
   }
-
-  const estrenos = [
-    {
-      id: 101,
-      titulo: "Horizonte Neon",
-      fechaEstreno: "12 Mar 2026",
-      imagen:
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=900&q=80"
-    },
-    {
-      id: 102,
-      titulo: "Mar de Acero",
-      fechaEstreno: "26 Mar 2026",
-      imagen:
-        "https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=900&q=80"
-    },
-    {
-      id: 103,
-      titulo: "Codigo Aurora",
-      fechaEstreno: "9 Abr 2026",
-      imagen:
-        "https://images.unsplash.com/photo-1517602383353-e7db3b0ea3a0?w=900&q=80"
-    },
-    {
-      id: 104,
-      titulo: "Ultima Funcion",
-      fechaEstreno: "30 Abr 2026",
-      imagen:
-        "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=80"
-    }
-  ];
-
-  const promociones = [
-    "2x1 miercoles",
-    "Combo familiar",
-    "Membresia VIP",
-    "Descuentos para estudiantes"
-  ];
 
   function toggleRecordatorio(id) {
     setRecordatorios((prev) =>
@@ -124,7 +108,7 @@ function Home() {
             Vive una experiencia cinematografica intensa con sonido premium,
             salas reclinables y funciones exclusivas.
           </p>
-          <button className="btn btn-primary">Comprar boletos</button>
+          <Button className="btn btn-primary">Comprar boletos</Button>
         </div>
       </section>
 
@@ -139,7 +123,7 @@ function Home() {
       </section>
 
       <div className="grid-container">
-        {peliculasFiltradas.map((pelicula) => (
+        {peliculasHome.map((pelicula) => (
           <div
             key={pelicula.id}
             className={`home-card ${favoritas.includes(pelicula.id) ? "is-favorite" : ""}`}
@@ -154,22 +138,22 @@ function Home() {
             />
 
             <div className="home-actions">
-              <button
+              <Button
                 className="btn btn-outline"
                 onClick={() => toggleDescripcion(pelicula.id)}
               >
                 {descripcionAbierta === pelicula.id
                   ? "Ocultar descripcion"
                   : "Ver descripcion"}
-              </button>
-              <button
+              </Button>
+              <Button
                 className="btn btn-secondary"
                 onClick={() => toggleFavorita(pelicula.id)}
               >
                 {favoritas.includes(pelicula.id)
                   ? "Quitar de favoritas"
                   : "Agregar a favoritas"}
-              </button>
+              </Button>
             </div>
 
             {descripcionAbierta === pelicula.id && (
@@ -186,20 +170,20 @@ function Home() {
             <p>Activa un recordatorio para no perderte la funcion.</p>
           </div>
           <div className="home-carousel-controls">
-            <button
+            <Button
               className="btn btn-outline"
               onClick={() => scrollCarousel(-1)}
-              aria-label="Anterior"
+              ariaLabel="Anterior"
             >
               ◀
-            </button>
-            <button
+            </Button>
+            <Button
               className="btn btn-outline"
               onClick={() => scrollCarousel(1)}
-              aria-label="Siguiente"
+              ariaLabel="Siguiente"
             >
               ▶
-            </button>
+            </Button>
           </div>
         </div>
         <div className="home-carousel" ref={carouselRef}>
@@ -209,7 +193,7 @@ function Home() {
               <div className="home-carousel-body">
                 <h3>{estreno.titulo}</h3>
                 <p>Estreno: {estreno.fechaEstreno}</p>
-                <button
+                <Button
                   className={`btn ${
                     recordatorios.includes(estreno.id)
                       ? "btn-secondary"
@@ -220,7 +204,7 @@ function Home() {
                   {recordatorios.includes(estreno.id)
                     ? "Recordatorio activo"
                     : "Agregar recordatorio"}
-                </button>
+                </Button>
               </div>
             </article>
           ))}

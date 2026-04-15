@@ -1,0 +1,19 @@
+import peliculas from "../detalles.json";
+
+export const peliculasData = peliculas;
+
+export function mezclarLista(lista) {
+  const copia = [...lista];
+
+  for (let i = copia.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+
+  return copia;
+}
+
+export function getPeliculasHomeDestacadas(cantidad = 4) {
+  const peliculasHome = peliculasData.filter((pelicula) => pelicula.seccion === "home");
+  return mezclarLista(peliculasHome).slice(0, cantidad);
+}

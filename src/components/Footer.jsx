@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="site-footer">
@@ -18,10 +20,38 @@ function Footer() {
 
         <div className="site-footer-group">
           <h3>Informacion</h3>
-          <a href="#">Terminos y condiciones</a>
-          <a href="#">Aviso de privacidad</a>
-          <a href="#">Contacto</a>
+          <Link to="/terminos">Terminos y condiciones</Link>
+          <Link to="/privacidad">Aviso de privacidad</Link>
+          <Link to="/contacto">Contacto</Link>
           <a href="#">Ubicaciones</a>
+        </div>
+
+        <div className="site-footer-group site-footer-apps">
+          <h3>Descarga la app</h3>
+          <div className="site-footer-store-badges">
+            <a
+              href="https://www.apple.com/app-store/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Descargar en App Store"
+            >
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="Disponible en App Store"
+              />
+            </a>
+            <a
+              href="https://play.google.com/store"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Descargar en Google Play"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Disponible en Google Play"
+              />
+            </a>
+          </div>
         </div>
       </div>
 
